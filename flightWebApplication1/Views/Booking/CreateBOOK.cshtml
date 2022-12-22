@@ -1,0 +1,149 @@
+﻿@model flightWebApplication1.Models.Booking
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@{
+    var I = ViewBag.data;
+
+
+}
+<br>
+<center><h4>Flight Details</h4>
+<hr>
+<table style="font-family:Arial">
+    <tr>
+        <td>Flight_No.:</td>
+        <td>@I.Flight_Id</td>
+        <td>
+        </td>
+        <td>Name:</td>
+        <td>@I.Name</td>
+
+        <td>
+        </td>
+        <td>To:</td>
+        <td>@I.To</td>
+        <td>
+        </td>
+
+        <td>From:</td>
+        <td>@I.From</td>
+        <td>
+        </td>
+        <td>Fare:</td>
+        <td>@I.Fare</td>
+    </tr>
+
+
+
+</table>
+<br>
+<hr>
+<h2>Please Enter Passenger Details</h2>
+<br>
+
+@using (Html.BeginForm("Create", "Booking", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passenger_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passenger_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Passenger_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passport_No, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passport_No, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Passport_No, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Flight_Id, "Flight", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" value="@I.Flight_Id" />
+                @** @Html.DropDownListFor(model => model.Flight_Id, ViewBag.Role_Id as SelectList, "--Select_Available FLIGHT--")*@
+
+                @Html.ValidationMessageFor(model => model.Flight_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+            <input type="text" value="@Session["UserName"]" />
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Confirm" class="btn btn-default" onclick="confirm()" />
+               
+            </div>
+        </div>
+    </div>
+}
+    </center>
+
+<div>
+    @Html.ActionLink("Back TO Home", "Guest","Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript">
+function confirm() {
+            if (confirm("Are you sure you want to Confirm Booking ...?")) {
+                return true;
+            }
+            return false;
+        }
+</script>

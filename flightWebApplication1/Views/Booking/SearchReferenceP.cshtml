@@ -1,0 +1,50 @@
+﻿@model flightWebApplication1.Models.Booking
+
+@{
+    ViewBag.Title = "SearchReferenceP";
+}
+@{
+    var b = ViewBag.Passenger;
+    var I = ViewBag.flight;
+}
+<br>
+<center>
+    <hr>
+    <table style="font-family:Arial">
+        <tr>
+
+           <td>
+            </td>
+            <td>Passenger Name:</td>
+            <td>@b.Passenger_Name</td>
+            <td>Flight Name:</td>
+            <td>@I.Name</td>
+            <td>
+            </td>
+            <td>To:</td>
+            <td>@I.To</td>
+            <td>
+            </td>
+
+            <td>From:</td>
+            <td>@I.From</td>
+            <td>
+                Date:
+            </td>
+            <td>@I.DateAndTime</td>
+            <td>Fare:</td>
+            <td>@I.Fare</td>
+            <td>
+                @Html.ActionLink("CheckIn", "CheckInId","CheckIn")
+                
+            </td>
+        </tr>
+    </table>
+</center>
+<br>
+
+
+
+<p>
+    @Html.ActionLink("Back to Home", "Guest","Home")
+</p>

@@ -1,0 +1,118 @@
+﻿@model flightWebApplication1.Models.Flight
+
+
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+
+
+
+@using (Html.BeginForm("SearchResult", "Flight", FormMethod.Get))
+{
+    @Html.ValidationSummary(false)
+    <br />
+    <br />
+    <br />
+
+
+
+    <u><div><h1>SEARCH FLIGHT</h1></div></u>
+    <br />
+    <br />
+
+
+
+    <table style="border:0px; width:500px;">
+        <tr>
+
+
+
+            <td>
+                <br />
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.From)
+                </div>
+                <br />
+            </td>
+
+
+
+            <td>
+                <br />
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.From)
+                    @Html.ValidationMessageFor(model => model.From)
+                </div>
+                <br />
+            </td>
+
+
+
+        <tr>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.To)
+                </div>
+                <br />
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.To)
+                    @Html.ValidationMessageFor(model => model.To)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.DateAndTime)
+                </div>
+
+
+
+            </td>
+            <td>
+                <br />
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.DateAndTime)
+                    @Html.ValidationMessageFor(model => model.DateAndTime)
+                    <input type="date" name="DateAndTime" />
+
+
+
+                </div>
+                <br />
+            </td>
+
+
+
+        </tr>
+        <tr>
+
+
+
+            <td style="vertical-align:bottom;">
+                <br />
+
+
+
+                <input name="SearchButton" type="submit" value="Search" />
+                <br />
+            </td>
+        </tr>
+    </table>
+}
+<br />
+@if (Session["UserName"] != null)
+{
+    <p style="font-size:20px">@Html.ActionLink("LogOut", "Login", "Registration")</p>
+}
+<p style="font-size:20px">
+    @Html.ActionLink("Back", "Search", "Home")
+</p>

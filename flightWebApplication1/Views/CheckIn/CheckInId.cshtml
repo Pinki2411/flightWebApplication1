@@ -1,0 +1,31 @@
+﻿@model flightWebApplication1.Models.CheckIn
+
+@{
+    ViewBag.Title = "CheckInId";
+}
+
+<h2>CheckIn</h2>
+
+@{
+
+    var I = ViewBag.ch;
+}
+<br>
+<center>
+    <hr>
+    <table style="font-family:Arial">
+        <tr>
+
+            <td>
+            </td>
+            <td>CheckID:</td>
+            <td>@I.Check_Id</td>
+            <td>Seat Number:</td>
+            <td>@I.Seat_Allocation</td>
+        </tr>
+    </table>
+</center>
+<br>
+<p>
+@Html.ActionLink("Back to Home", "Guest", "Home")
+    </p>

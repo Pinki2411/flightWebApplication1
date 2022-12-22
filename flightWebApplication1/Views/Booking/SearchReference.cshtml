@@ -1,0 +1,38 @@
+﻿@model flightWebApplication1.Models.Booking
+
+@{
+    ViewBag.Title = "SearchReference";
+}
+<center>
+
+    <h2>SearchReference</h2>
+
+    @using (Html.BeginForm("SearchReferenceP", "Booking", FormMethod.Get))
+    {
+
+        @Html.ValidationSummary(false)
+        <div style="border-bottom:1px solid #bbb">
+        <table style="border:0px; width:500px;">
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.ReferenceNo)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ReferenceNo)
+                        @Html.ValidationMessageFor(model => model.ReferenceNo)
+                    </div>
+                </td>
+            <tr>
+                <td style="vertical-align:bottom;">
+                    <input name="SearchButton" type="submit" value="Search" />
+                </td>
+            </tr>
+        </table>
+            </div>
+    }
+
+
+    </center>
